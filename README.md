@@ -27,7 +27,7 @@ Since FAQORA is built using pure HTML, CSS, and JS, getting started is incredibl
 
 1. **Clone the repository** (or download the source code):
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/JatinJoshi-JJ/Faqora.git
    ```
 2. **Navigate to the project folder:**
    ```bash
