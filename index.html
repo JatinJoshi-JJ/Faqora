@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAQORA — Premium Interactive FAQ &amp; Knowledge Experience</title>
+    <meta name="description"
+        content="A refined editorial FAQ accordion and knowledge base powered by 4D particle typography, Lenis smooth scrolling, and dual-mode styling." />
+
+    <!-- Lenis Smooth Scrolling CDN -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+
+    <!-- Google Fonts: Cormorant Garamond, Space Grotesk, Plus Jakarta Sans, JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!-- Site Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#hero" class="brand-logo" aria-label="FAQORA Homepage">
+                <span class="brand-star">✦</span>
+                <span>FAQORA</span>
+            </a>
+
+            <nav class="nav-desktop" aria-label="Primary Navigation">
+                <ul class="nav-links">
+                    <li><a href="#hero" class="nav-link">Home</a></li>
+                    <li><a href="#faqSection" class="nav-link active">FAQs</a></li>
+                    <li><a href="#howSection" class="nav-link">How It Works</a></li>
+                    <li>
+                        <a href="#contact" class="nav-link" id="navContactTrigger">Concierge</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <button type="button" id="btnAudioToggle" class="btn-icon-pill" aria-label="Toggle Sound Feedback"
+                    title="Toggle Sound Feedback">
+                    <span id="audioIcon">🔊</span>
+                </button>
+                <button type="button" id="btnThemeToggle" class="btn-icon-pill" aria-label="Toggle Light/Dark Theme"
+                    title="Toggle Theme">
+                    <span id="themeIcon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section with 4D Kinetic Typography -->
+        <section class="hero-section" id="hero">
+            <div class="container">
+                <div class="help-badge">
+                    <span>✦</span>
+                    <span>HELP CENTER</span>
+                </div>
+
+                <!-- 4D Interactive Particle Typography Canvas Stage -->
+                <div class="hero-4d-canvas-wrap" id="canvasContainer">
+                    <canvas id="heroParticleCanvas" aria-label="4D Quantum Particle Typography"></canvas>
+                    <div id="particleReticle"></div>
+                </div>
+
+                <!-- Real-Time Text Morphing Input Bar -->
+                <div class="morph-control-shell">
+                    <span style="color: var(--color-accent); font-size: 1rem">✦</span>
+                    <input type="text" id="customMorphInput" maxlength="16" value="FAQORA"
+                        placeholder="Type any word to morph..." class="morph-input"
+                        aria-label="Custom word for 4D particle morph" />
+                    <button type="button" id="btnTriggerBlast" class="btn-morph-blast">
+                        💥 Disperse
+                    </button>
+                </div>
+
+                <!-- Quick Preset Chips -->
+                <div class="morph-presets-row">
+                    <button type="button" class="preset-chip active" data-word="FAQORA">
+                        FAQORA
+                    </button>
+                    <button type="button" class="preset-chip" data-word="QUESTIONS">
+                        QUESTIONS
+                    </button>
+                    <button type="button" class="preset-chip" data-word="ANSWERS">
+                        ANSWERS
+                    </button>
+                    <button type="button" class="preset-chip" data-word="KNOWLEDGE">
+                        KNOWLEDGE
+                    </button>
+                    <button type="button" class="preset-chip" data-word="CONCIERGE">
+                        CONCIERGE
+                    </button>
+                    <button type="button" class="preset-chip" data-word="ATELIER">
+                        ATELIER
+                    </button>
+                </div>
+
+                <!-- Physics Solver Modes -->
+                <div class="solver-bar" role="group" aria-label="Physics Solvers">
+                    <button type="button" class="btn-solver active" data-solver="repel">
+                        ⚡ Repulsion Scatter
+                    </button>
+                    <button type="button" class="btn-solver" data-solver="vortex">
+                        🌀 Gravitational Vortex
+                    </button>
+                    <button type="button" class="btn-solver" data-solver="liquid">
+                        💧 Liquid Viscosity
+                    </button>
+                    <button type="button" class="btn-solver" data-solver="wave">
+                        🌊 Harmonic Wave
+                    </button>
+                </div>
+
+                <!-- Live Kinetic Telemetry HUD -->
+                <div>
+                    <div class="hero-telemetry-strip">
+                        <span>Active Nodes:
+                            <span id="telemetryNodes" class="telemetry-val">2,480</span></span>
+                        <span>Spring Constant:
+                            <span id="telemetryHooke" class="telemetry-val">k = 0.12</span></span>
+                        <span>Damping:
+                            <span id="telemetryDamping" class="telemetry-val">ζ = 0.88</span></span>
+                        <span>Velocity:
+                            <span id="telemetrySpeed" class="telemetry-val">0 px/s</span></span>
+                    </div>
+                </div>
+
+                <p class="hero-sub">
+                    Find quick answers to the most common questions about our products,
+                    services, and policies. Can't find what you're looking for? Feel
+                    free to contact our concierge.
+                </p>
+            </div>
+        </section>
+
+        <!-- Search and Categories Section -->
+        <section class="search-filter-section" id="faqSection">
+            <div class="container">
+                <!-- Search Bar -->
+                <div class="search-shell">
+                    <span class="search-icon">🔍</span>
+                    <input type="text" id="faqSearchInput" class="search-input"
+                        placeholder="Search for a question or keyword... (Press '/' to focus)"
+                        aria-label="Search FAQ questions" />
+                    <button type="button" id="btnSearchAction" class="btn-search-submit">
+                        Search
+                    </button>
+                </div>
+
+                <!-- Category Pills (From Reference) -->
+                <div class="category-pills-row" id="categoryPillsRow" role="tablist" aria-label="FAQ Categories">
+                    <!-- Dynamic Pills Injected by JavaScript -->
+                </div>
+
+                <!-- Mode & Result Count Bar -->
+                <div class="faq-meta-bar">
+                    <div id="resultCountLabel">Showing all questions</div>
+                    <div class="faq-mode-toggles">
+                        <span style="font-size: 0.76rem; margin-right: 0.3rem">Mode:</span>
+                        <button type="button" class="btn-mode-toggle active" id="btnSingleMode">
+                            Single Open
+                        </button>
+                        <button type="button" class="btn-mode-toggle" id="btnMultiMode">
+                            Multi Open
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Main FAQ Accordion Stack -->
+                <div class="accordion-stack" id="accordionStack" role="region"
+                    aria-label="Frequently Asked Questions List">
+                    <!-- Dynamic FAQ Cards Injected by JavaScript -->
+                </div>
+
+                <!-- Concierge Support Card (From Reference Image) -->
+                <div class="concierge-card" id="conciergeBanner">
+                    <div class="concierge-left">
+                        <div class="concierge-icon-circle" aria-hidden="true">🎧</div>
+                        <div>
+                            <div class="concierge-eyebrow">STILL HAVE QUESTIONS?</div>
+                            <div class="concierge-title">
+                                Our support team is here to help.
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-concierge-action" id="btnOpenSupportModal">
+                        <span>Contact Support</span>
+                        <span>➔</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- How It Works Section -->
+        <section class="how-section" id="howSection">
+            <div class="container">
+                <div class="section-eyebrow">EFFORTLESS RESOLUTION</div>
+                <h2 class="section-title">How FAQORA Works</h2>
+
+                <div class="how-steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h3 class="step-title">Explore Topics</h3>
+                        <p class="step-desc">
+                            Filter by categories or enter keywords into our predictive
+                            instant search bar.
+                        </p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h3 class="step-title">Expand Insight</h3>
+                        <p class="step-desc">
+                            Click any card to smoothly inspect detailed answers and relevant
+                            guides.
+                        </p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h3 class="step-title">Share Feedback</h3>
+                        <p class="step-desc">
+                            Vote on answer helpfulness to help us continually refine our
+                            knowledge base.
+                        </p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h3 class="step-title">Contact Concierge</h3>
+                        <p class="step-desc">
+                            Still need answers? Submit a direct inquiry to our 24/7
+                            dedicated support team.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Site Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <span class="brand-star">✦</span>
+                <span>FAQORA</span>
+            </div>
+            <div class="footer-links">
+                <a href="#hero">Home</a>
+                <a href="#faqSection">FAQs</a>
+                <a href="#howSection">How It Works</a>
+                <a href="#contact" id="footerContactTrigger">Support Concierge</a>
+            </div>
+            <div class="footer-copyright" id="footerYearLabel">
+                &copy; FAQORA. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Support Modal Dialog -->
+    <div class="modal-overlay" id="supportModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-box">
+            <button type="button" class="modal-close" id="btnCloseModal" aria-label="Close dialog">
+                &times;
+            </button>
+            <h3 id="modalTitle" style="
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+          ">
+                Support Concierge
+            </h3>
+            <p style="
+            font-size: 0.9rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 1.4rem;
+          ">
+                Have a specialized request? Send a dispatch directly to our customer
+                success team.
+            </p>
+            <form id="supportContactForm">
+                <input type="text" class="modal-input" placeholder="Your Full Name" required />
+                <input type="email" class="modal-input" placeholder="Your Email Address" required />
+                <textarea class="modal-input" rows="4" placeholder="How can our team assist you today?" required
+                    style="resize: vertical"></textarea>
+                <button type="submit" class="btn-search-submit" style="width: 100%">
+                    Submit Dispatch
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification Element -->
+    <div class="toast-pill" id="toastPill" role="status" aria-live="polite">
+        Notification
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
